@@ -43,10 +43,10 @@ team1 = ["Kirk Cousins", "Antonio Brown", "Adam Thielen", "Alfred Morris", "Carl
 team2 = ["Andy Dalton", "Doug Baldwin", "JuJu", "Alvin Kamara", "Mark Ingram", "Jack Doyle", "Alex Collins", "Isaiah Crowell", "Tyler Kroft", "Kenny Stills", "Andre Ellington", "Jonathan Stewart", "Rod Smith", "Kai Forbath", "Los Angeles", "Cincinnati"]
 
 #authentic with redit through praw
-def praw_reddit_auth():
-    reddit = praw.Reddit(client_id='zRNQbkmrDxZ7fg',
-                     client_secret='yc2c8ram5CF19PnAYBpLf7TG4aM',
-                     user_agent='bot')
+def praw_reddit_auth(clientid,secret,bot):
+    reddit = praw.Reddit(client_id=clientid,
+                     client_secret=secret,
+                     user_agent=bot)
     return reddit
 
 
@@ -85,9 +85,7 @@ def get_news(reddit, subredditname, teams):
 
 
 #send text
-def send_text(msg):
-    comefrom = "fnsuperman5@gmail.com"
-    to = "8457022925@vtext.com"
+def send_text(msg, comefrom, to, passwrd):
 
     for mes in msg:
         if(len(mes) > 0):
@@ -95,7 +93,7 @@ def send_text(msg):
             # s = smtplib.SMTP('smtp.gmail.com:587')
             # s.ehlo()
             # s.starttls()
-            # s.login("fnsuperman5@gmail.com", "franknardone5")
+            # s.login(comefrom, passwrd)
             # s.sendmail(comefrom, to, msg)
             # s.quit()
 
@@ -137,12 +135,7 @@ def utc_to_datetime(utcc):
 
 
 def main():
-    #dbconnect("fftest.c5x5m6hxjify.us-east-2.rds.amazonaws.com", "franknardone", "nardone5", "fftest")
-    redditconnection = praw_reddit_auth()
-    add_ff_to_db(update_ff_table(redditconnection),dbconnect("fftest.c5x5m6hxjify.us-east-2.rds.amazonaws.com", "franknardone", "nardone5", "fftest"))
-    #send_text(get_news(redditconnection, subreddit, team1))
-    # send_text(get_news(redditconnection, subreddit, team2))
-
+    print("sensetive data goes here")
 
 if __name__ == "__main__":
     main()
